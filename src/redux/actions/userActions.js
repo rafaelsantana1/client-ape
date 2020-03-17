@@ -3,6 +3,8 @@ import axios from 'axios'
 
 export const loginUser = (userData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI });
+        console.log(userData)
+
     axios.post('/login', userData)
     .then(res => {
         setAuthorizationHeader(res.data.token)
@@ -38,7 +40,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 export const logoutUser = () => (dispatch) => {
     localStorage.removeItem('FBIdToken')
     delete axios.defaults.headers.common['Authorization']
-    dispatch(SET_UNAUTHENTICATED)
+    dispatch({ type: SET_UNAUTHENTICATED })
 }
 
 export const getUserData = () => (dispatch) => {
@@ -52,6 +54,17 @@ export const getUserData = () => (dispatch) => {
         })
         .catch(err => console.log(err))
 }
+
+
+export const uploadImage = (formData) => (dispatch) => {
+    dispatch({ type: LOADING_USER })
+    axios.post('/user/image', formData)
+        .then(() => {
+            dispatch(getUserData())
+        })
+        .catch(err => console.log(err))
+}
+
 
 const setAuthorizationHeader = (token) => {
     const FBIdToken = `Bearer ${token}`
