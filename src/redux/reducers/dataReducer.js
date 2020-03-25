@@ -1,10 +1,12 @@
-import { SET_SCREAMS, LOADING_DATA, LIKE_SCREAM, UNLIKE_SCREAM} from '../types'
+import { SET_SCREAMS, LOADING_DATA, LIKE_SCREAM, UNLIKE_SCREAM, DELETE_SCREAM} from '../types'
 
 const initialState = {
     screams: [],
     scream: {},
     loading: false
 }
+
+let index
 
 export default function (state = initialState, action){
     switch(action.type){
@@ -22,8 +24,18 @@ export default function (state = initialState, action){
         case LIKE_SCREAM:
         case UNLIKE_SCREAM:
         //chained -> code works for both cases
-            let index = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId)
+            index = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId)
             state.screams[index] = action.payload
+            return {
+                ...state
+            }
+        case DELETE_SCREAM:
+            index = state.screams.findIndex(
+                (scream) => scream.screamId === action.payload
+            )
+            //debug
+            console.log(state.screams)
+            state.screams.splice(index, 1) //removes by index
             return {
                 ...state
             }

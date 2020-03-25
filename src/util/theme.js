@@ -7,8 +7,7 @@ export default {
         //     contrastText: '#ffffff'
       },
       secondary: {
-        main: '#1122ee'
-  
+        main: '#dd3344'
       }
     },
     spreadIt: {
