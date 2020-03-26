@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
     import withStyles from '@material-ui/core/styles/withStyles'
     import PropTypes from 'prop-types'
-    import MyButton from '../util/MyButton'
+    import MyButton from '../../util/MyButton'
 
     //Mui stuff
     import Button from '@material-ui/core/Button'
@@ -10,14 +10,9 @@ import React, { Component, Fragment } from 'react'
     import DialogActions from '@material-ui/core/DialogActions';
     import DeleteOutline from '@material-ui/icons/DeleteOutline';
 
-    //Icons
-    import ChatIcon from '@material-ui/icons/Chat'
-    import FavoriteIcon from '@material-ui/icons/Favorite'
-    import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
-
     //Redux
     import {connect} from 'react-redux'
-    import {deleteScream} from '../redux/actions/dataActions'
+    import {deleteScream} from '../../redux/actions/dataActions'
 
 
 const styles = {
