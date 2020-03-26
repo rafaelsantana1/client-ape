@@ -5,6 +5,7 @@ import React, { Component } from 'react'
     import PropTypes from 'prop-types'
     import MyButton from '../util/MyButton'
     import DeleteScream from './DeleteScream'
+    import ScreamDialog from './ScreamDialog'
 
     //Mui stuff
     import Card from '@material-ui/core/Card';
@@ -114,6 +115,7 @@ export class Scream extends Component {
                         <ChatIcon color="primary"/>
                     </MyButton>
                     <span>{commentCount} comments</span>
+                    <ScreamDialog screamId={screamId} userHandle={userHandle}/>
                 </CardContent>
             </Card>
         )
