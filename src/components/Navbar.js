@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import MyButton from '../util/MyButton'
+import PostScream from './PostScream'
 
 // require("react-router-dom").Link
 import AppBar from '@material-ui/core/AppBar'
@@ -23,9 +24,7 @@ class Navbar extends Component {
                 <Toolbar className="nav-container">
                     {authenticated ? (
                         <Fragment>
-                            <MyButton tip="Create a Scream">
-                                <AddIcon/>
-                            </MyButton>
+                            <PostScream/>
                             <Link to="/">
                                 <MyButton tip="Home">
                                     <HomeIcon/>
@@ -60,3 +59,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(Navbar)
+ 
