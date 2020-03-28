@@ -2,6 +2,8 @@ import React, { Component } from 'react'
     import withStyles from '@material-ui/core/styles/withStyles'
     import {Link} from 'react-router-dom'
     import dayjs from 'dayjs'
+    //var relativeTime = require('dayjs/plugin/relativeTime')
+    import relativeTime from 'dayjs/plugin/relativeTime'
     import PropTypes from 'prop-types'
     import MyButton from '../../util/MyButton'
     import DeleteScream from './DeleteScream'
@@ -19,8 +21,6 @@ import React, { Component } from 'react'
 
     //Redux
     import {connect} from 'react-redux'
-
-var relativeTime = require('dayjs/plugin/relativeTime')
 
 const styles = {
     card: {
@@ -79,7 +79,7 @@ export class Scream extends Component {
                         <ChatIcon color="primary"/>
                     </MyButton>
                     <span>{commentCount} comments</span>
-                    <ScreamDialog screamId={screamId} userHandle={userHandle}/>
+                    <ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog}/>
                 </CardContent>
             </Card>
         )
@@ -91,7 +91,8 @@ Scream.propTypes = {
     // unlikeScream: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     scream: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    openDialog: PropTypes.bool
 }
 const mapStateToProps = state => ({
     user:state.user
